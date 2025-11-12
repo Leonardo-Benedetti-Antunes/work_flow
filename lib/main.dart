@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:work_flow/core/di/injection.dart';
+import 'package:work_flow/modules/home_page/view/home_page_view.dart';
 
-void main() {
+void main() async {
+  configureDependencies();
   runApp(const MyApp());
 }
 
@@ -24,7 +27,7 @@ class MyApp extends StatelessWidget {
           onSurface: Colors.black,
         ),
       ),
-      home: Container(),
+      home: HomePageView(),
     );
   }
 }

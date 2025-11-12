@@ -1,11 +1,11 @@
 class ImageModel {
-  final int id;
+  final int? id;
   final int serviceOrderId;
   final String? title;
   final String imageUrl;
 
   ImageModel({
-    required this.id,
+    this.id,
     required this.serviceOrderId,
     this.title,
     required this.imageUrl,
