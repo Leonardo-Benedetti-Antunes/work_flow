@@ -4,7 +4,7 @@ CREATE TABLE service_order (
     description TEXT,
     status INT DEFAULT 0,
     location TEXT,
-    created_at TEXT,
+    created_at TEXT DEFAULT (datetime('now', 'localtime')),
     started_at TEXT,
     finished_at TEXT
 );

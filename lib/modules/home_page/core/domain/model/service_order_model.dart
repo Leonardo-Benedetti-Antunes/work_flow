@@ -1,7 +1,7 @@
 import 'package:work_flow/modules/home_page/core/domain/model/image_model.dart';
 
 class ServiceOrderModel {
-  final int id;
+  final int? id;
   final String name;
   final String? description;
   final int status;
@@ -12,7 +12,7 @@ class ServiceOrderModel {
   final List<ImageModel>? images;
 
   ServiceOrderModel({
-    required this.id,
+    this.id,
     required this.name,
     this.description,
     required this.status,
@@ -44,9 +44,9 @@ class ServiceOrderModel {
       description: map['description'],
       status: map['status'] as int,
       location: map['location'],
-      createdAt: map['created_at'] as DateTime,
-      startedAt: map['started_at'] as DateTime,
-      finishedAt: map['finished_at'] as DateTime,
+      createdAt: map['created_at'] as DateTime?,
+      startedAt: map['started_at'] as DateTime?,
+      finishedAt: map['finished_at'] as DateTime?,
       images: images,
     );
   }
