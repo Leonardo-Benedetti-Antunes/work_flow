@@ -3,9 +3,9 @@ import 'package:injectable/injectable.dart';
 import 'package:work_flow/modules/home_page/core/domain/contract/usecase/service_order/delete_service_order_usecase.dart';
 import 'package:work_flow/modules/home_page/core/domain/contract/usecase/service_order/fetch_all_service_order_usecase.dart';
 import 'package:work_flow/modules/home_page/core/domain/contract/usecase/service_order/get_service_order_usecase.dart';
-import 'package:work_flow/modules/home_page/core/domain/contract/usecase/service_order/post_service_order_usecase.dart';
-import 'package:work_flow/modules/home_page/core/domain/contract/usecase/service_order/put_service_order_usecase.dart';
-import 'package:work_flow/modules/home_page/core/domain/model/service_order_model.dart';
+import 'package:work_flow/modules/create_service_order/core/domain/contract/usecase/service_order/post_service_order_usecase.dart';
+import 'package:work_flow/modules/update_service_order/core/domain/contract/usecase/service_order/put_service_order_usecase.dart';
+import 'package:work_flow/core/domain/model/service_order_model.dart';
 import 'package:work_flow/modules/home_page/state/home_page_state.dart';
 
 @injectable
