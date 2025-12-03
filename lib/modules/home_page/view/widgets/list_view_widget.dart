@@ -60,7 +60,6 @@ class ListViewWidget extends StatelessWidget {
                       key: Key(serviceOrder.id.toString()),
                       confirmDismiss: (direction) async {
                         if (direction == DismissDirection.endToStart) {
-                          // Deslizar para esquerda = Excluir
                           return await _showDeleteDialog(context, serviceOrder);
                         } else if (direction == DismissDirection.startToEnd) {
                           // Deslizar para direita = Editar

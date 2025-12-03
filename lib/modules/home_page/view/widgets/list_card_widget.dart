@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:work_flow/core/domain/enum/status_enum.dart';
 import 'package:work_flow/core/domain/model/service_order_model.dart';
 
 class ListCardWidget extends StatelessWidget {

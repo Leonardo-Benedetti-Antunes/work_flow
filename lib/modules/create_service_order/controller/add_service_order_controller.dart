@@ -19,7 +19,15 @@ class AddServiceOrderController extends Cubit<AddServiceOrderState> {
     try {
       emit(AddServiceOrderLoading());
 
-      await postServiceOrderUsecase(serviceOrderModel, images);
+      final request = ServiceOrderModel(
+        name: serviceOrderModel.name,
+        status: serviceOrderModel.status,
+        createdAt: DateTime.now(),
+        description: serviceOrderModel.description,
+        location: serviceOrderModel.location,
+      );
+
+      await postServiceOrderUsecase(request, images);
 
       emit(AddServiceOrderSuccess(serviceOrderModel));
     } catch (e) {
