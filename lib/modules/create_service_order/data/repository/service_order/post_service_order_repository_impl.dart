@@ -10,9 +10,12 @@ class PostServiceOrderRepositoryImpl implements PostServiceOrderRepository {
   PostServiceOrderRepositoryImpl({required this.dbProvider});
 
   @override
-  Future<void> call(ServiceOrderModel serviceOrderModel) async {
+  Future<int> call(ServiceOrderModel serviceOrderModel) async {
     final db = await dbProvider.database;
-    await db.insert('service_order', serviceOrderModel.toMap());
-    return;
+    final response = await db.insert(
+      'service_order',
+      serviceOrderModel.toMap(),
+    );
+    return response;
   }
 }

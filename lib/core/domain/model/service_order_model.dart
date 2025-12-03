@@ -1,10 +1,11 @@
+import 'package:work_flow/core/domain/enum/status_enum.dart';
 import 'package:work_flow/core/domain/model/image_model.dart';
 
 class ServiceOrderModel {
   final int? id;
   final String name;
   final String? description;
-  final int status;
+  final StatusEnum status;
   final String? location;
   final DateTime? createdAt;
   final DateTime? startedAt;
@@ -27,7 +28,7 @@ class ServiceOrderModel {
     'id': id,
     'name': name,
     'description': description,
-    'status': status,
+    'status': status.index,
     'location': location,
     'created_at': createdAt?.toIso8601String(),
     'started_at': startedAt?.toIso8601String(),
@@ -42,7 +43,7 @@ class ServiceOrderModel {
       id: map['id'] as int,
       name: map['name'],
       description: map['description'],
-      status: map['status'] as int,
+      status: StatusEnum.values[map['status'] as int],
       location: map['location'],
       createdAt: map['created_at'] as DateTime?,
       startedAt: map['started_at'] as DateTime?,

@@ -1,35 +1,28 @@
-abstract class ServiceOrderState {}
+import 'package:flutter/widgets.dart';
+import 'package:work_flow/core/domain/model/image_model.dart';
+import 'package:work_flow/core/domain/model/service_order_model.dart';
 
-/// Estado inicial da criação
-class ServiceOrderStateCreate extends ServiceOrderState {}
+abstract class AddServiceOrderState {}
 
-/// Estado inicial da edição
-class ServiceOrderStateEdit extends ServiceOrderState {
-  final String name;
-  final String description;
-  final int status;
-  final String place;
-  final String createdAt;
-  final String initiatedAt;
-  final String finishedAt;
+class AddServiceOrderInitial extends AddServiceOrderState {}
 
-  ServiceOrderStateEdit({
-    required this.name,
-    required this.description,
-    required this.status,
-    required this.place,
-    required this.createdAt,
-    required this.initiatedAt,
-    required this.finishedAt,
-  });
+class AddServiceOrderFields extends AddServiceOrderState {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
+  final TextEditingController placeController = TextEditingController();
+  final List<ImageModel> images = List.empty(growable: true);
 }
 
-/// Estados adicionais essenciais
-class ServiceOrderLoading extends ServiceOrderState {}
+class AddServiceOrderLoading extends AddServiceOrderState {}
 
-class ServiceOrderSuccess extends ServiceOrderState {}
+class AddServiceOrderSuccess extends AddServiceOrderState {
+  final ServiceOrderModel serviceOrder;
 
-class ServiceOrderError extends ServiceOrderState {
+  AddServiceOrderSuccess(this.serviceOrder);
+}
+
+class AddServiceOrderError extends AddServiceOrderState {
   final String message;
-  ServiceOrderError(this.message);
+
+  AddServiceOrderError(this.message);
 }

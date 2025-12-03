@@ -1,13 +1,13 @@
 import 'package:injectable/injectable.dart';
 import 'package:work_flow/core/database/app_database.dart';
-import 'package:work_flow/modules/home_page/core/domain/contract/repository/service_order/get_service_order_repository.dart';
+import 'package:work_flow/modules/service_order_details/core/domain/contract/repository/service_order/get_service_order_repository.dart';
 import 'package:work_flow/core/domain/model/service_order_model.dart';
 
 @LazySingleton(as: GetServiceOrderRepository)
 class GetServiceOrderRepositoryImpl implements GetServiceOrderRepository {
   final AppDatabase dbProvider;
 
-  GetServiceOrderRepositoryImpl({required this.dbProvider});
+  GetServiceOrderRepositoryImpl(this.dbProvider);
 
   @override
   Future<ServiceOrderModel> call(int id) async {

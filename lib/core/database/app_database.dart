@@ -39,7 +39,8 @@ class AppDatabase {
 
   Future<void> _runMigrations(Database db, int version) async {
     final migrationFiles = [
-      'lib/core/database/migrations/001_create_database.sql',
+      'lib/core/database/migrations/001_create_service_order_database.sql',
+      'lib/core/database/migrations/002_create_image_database.sql',
     ];
 
     for (final file in migrationFiles) {

@@ -19,13 +19,19 @@ class HomePageView extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => AddServiceOrderView(),
-                  ),
+              onPressed: () async {
+                final result = await Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => AddServiceOrderView()),
                 );
+
+                if (result == true) {
+                  // Recarrega a lista
+                  controller
+                      .fetchAllServiceOrderUsecase(); // ou o método que você usa
+                }
               },
+              child: Icon(Icons.add),
             ),
             appBar: AppBar(
               title: Row(children: [Text("Work Flow")]),
