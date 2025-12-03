@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:work_flow/core/domain/model/image_model.dart';
 import 'package:work_flow/core/domain/model/service_order_model.dart';
-import 'package:work_flow/modules/update_service_order/core/domain/contract/usecase/service_order/put_service_order_usecase.dart';
+import 'package:work_flow/core/domain/contract/usecase/put_service_order_usecase.dart';
 import 'package:work_flow/modules/update_service_order/state/edit_service_order_state.dart';
 
 @injectable

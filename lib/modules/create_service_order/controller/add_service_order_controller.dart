@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:work_flow/core/domain/model/image_model.dart';
 import 'package:work_flow/core/domain/model/service_order_model.dart';
-import 'package:work_flow/modules/create_service_order/core/domain/contract/usecase/service_order/post_service_order_usecase.dart';
+import 'package:work_flow/core/domain/contract/usecase/post_service_order_usecase.dart';
 import 'package:work_flow/modules/create_service_order/state/add_service_order_state.dart';
 
 @injectable

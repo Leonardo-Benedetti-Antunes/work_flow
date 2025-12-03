@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:work_flow/modules/home_page/core/domain/contract/usecase/service_order/delete_service_order_usecase.dart';
-import 'package:work_flow/modules/home_page/core/domain/contract/usecase/service_order/fetch_all_service_order_usecase.dart';
-import 'package:work_flow/modules/create_service_order/core/domain/contract/usecase/service_order/post_service_order_usecase.dart';
-import 'package:work_flow/modules/update_service_order/core/domain/contract/usecase/service_order/put_service_order_usecase.dart';
+import 'package:work_flow/core/domain/contract/usecase/delete_service_order_usecase.dart';
+import 'package:work_flow/core/domain/contract/usecase/fetch_all_service_order_usecase.dart';
+import 'package:work_flow/core/domain/contract/usecase/post_service_order_usecase.dart';
+import 'package:work_flow/core/domain/contract/usecase/put_service_order_usecase.dart';
 import 'package:work_flow/modules/home_page/state/home_page_state.dart';
 
 @injectable

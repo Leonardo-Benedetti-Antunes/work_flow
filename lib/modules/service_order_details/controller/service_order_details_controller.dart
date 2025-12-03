@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:work_flow/modules/service_order_details/core/domain/contract/usecase/service_order/get_service_order_usecase.dart';
+import 'package:work_flow/core/domain/contract/usecase/get_service_order_usecase.dart';
 import 'package:work_flow/modules/service_order_details/state/service_order_details_state.dart';
 
 @injectable
