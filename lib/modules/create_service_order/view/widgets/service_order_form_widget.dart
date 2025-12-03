@@ -52,6 +52,7 @@ class ServiceOrderFormWidget extends StatelessWidget {
                 ),
                 fields.images,
               );
+              if (context.mounted) Navigator.pop(context, true);
             },
             child: Padding(padding: EdgeInsets.all(16), child: Text("Salvar")),
           ),

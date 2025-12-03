@@ -7,16 +7,15 @@ import 'package:work_flow/modules/home_page/view/widgets/list_view_widget.dart';
 import 'package:work_flow/modules/create_service_order/view/add_service_order_view.dart';
 
 class HomePageView extends StatelessWidget {
-  final controller = getIt<HomePageController>();
-
-  HomePageView({super.key});
+  const HomePageView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => controller,
+      create: (context) => getIt<HomePageController>(),
       child: BlocBuilder<HomePageController, HomePageState>(
         builder: (context, state) {
+          final controller = context.read<HomePageController>();
           return Scaffold(
             floatingActionButton: FloatingActionButton(
               onPressed: () async {
@@ -24,12 +23,7 @@ class HomePageView extends StatelessWidget {
                   context,
                   MaterialPageRoute(builder: (_) => AddServiceOrderView()),
                 );
-
-                if (result == true) {
-                  // Recarrega a lista
-                  controller
-                      .fetchAllServiceOrderUsecase(); // ou o método que você usa
-                }
+                if (result == true) controller.fetchAllServiceOrder();
               },
               child: Icon(Icons.add),
             ),

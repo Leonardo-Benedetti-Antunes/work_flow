@@ -17,19 +17,14 @@ class AddServiceOrderController extends Cubit<AddServiceOrderState> {
     List<ImageModel>? images,
   ) async {
     try {
-      // Emite estado de loading
       emit(AddServiceOrderLoading());
 
-      // Chama o usecase para criar a ordem
       await postServiceOrderUsecase(serviceOrderModel, images);
 
-      // Emite estado de sucesso
       emit(AddServiceOrderSuccess(serviceOrderModel));
     } catch (e) {
-      // Emite estado de erro
       emit(AddServiceOrderError(e.toString()));
 
-      // Volta para o estado de campos para permitir nova tentativa
       await Future.delayed(const Duration(milliseconds: 100));
       emit(AddServiceOrderFields());
     }

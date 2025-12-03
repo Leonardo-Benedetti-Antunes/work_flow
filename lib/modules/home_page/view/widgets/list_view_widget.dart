@@ -44,11 +44,17 @@ class ListViewWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("data", style: Theme.of(context).textTheme.titleMedium),
-              Text("data", style: Theme.of(context).textTheme.titleMedium),
+              Text(
+                "Selecionar Tudo",
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              Text("Desativar", style: Theme.of(context).textTheme.titleMedium),
+              Text("Excluir", style: Theme.of(context).textTheme.titleMedium),
             ],
           ),
         ),
+
+        Divider(),
 
         Expanded(
           child: serviceOrderList?.isEmpty ?? true

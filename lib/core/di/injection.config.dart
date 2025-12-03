@@ -129,11 +129,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i627.PutServiceOrderUsecase>(
       () => _i764.PutServiceOrderUsecaseImpl(
         gh<_i165.PutServiceOrderRepository>(),
+        gh<_i37.DeleteImageRepository>(),
+        gh<_i535.PostImageRepository>(),
       ),
-    );
-    gh.factory<_i842.EditServiceOrderController>(
-      () =>
-          _i842.EditServiceOrderController(gh<_i627.PutServiceOrderUsecase>()),
     );
     gh.lazySingleton<_i584.DeleteServiceOrderUsecase>(
       () => _i669.DeleteServiceOrderUsecaseImpl(
@@ -153,6 +151,13 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i535.PostImageRepository>(),
       ),
     );
+    gh.factoryParam<_i735.ServiceOrderDetailsController, int, dynamic>(
+      (serviceOrderId, _) => _i735.ServiceOrderDetailsController(
+        gh<_i937.GetServiceOrderUsecase>(),
+        gh<_i627.PutServiceOrderUsecase>(),
+        serviceOrderId,
+      ),
+    );
     gh.factory<_i566.HomePageController>(
       () => _i566.HomePageController(
         deleteServiceOrderUsecase: gh<_i584.DeleteServiceOrderUsecase>(),
@@ -161,15 +166,13 @@ extension GetItInjectableX on _i174.GetIt {
         putServiceOrderUsecase: gh<_i627.PutServiceOrderUsecase>(),
       ),
     );
+    gh.factory<_i842.EditServiceOrderController>(
+      () =>
+          _i842.EditServiceOrderController(gh<_i627.PutServiceOrderUsecase>()),
+    );
     gh.factory<_i1066.AddServiceOrderController>(
       () =>
           _i1066.AddServiceOrderController(gh<_i598.PostServiceOrderUsecase>()),
-    );
-    gh.factoryParam<_i735.ServiceOrderDetailsController, int, dynamic>(
-      (serviceOrderId, _) => _i735.ServiceOrderDetailsController(
-        gh<_i937.GetServiceOrderUsecase>(),
-        serviceOrderId,
-      ),
     );
     return this;
   }

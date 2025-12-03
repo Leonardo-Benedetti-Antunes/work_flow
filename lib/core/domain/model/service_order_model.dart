@@ -46,7 +46,7 @@ class ServiceOrderModel {
       status: StatusEnum.values[map['status'] as int],
       location: map['location'],
       createdAt: map['created_at'] as DateTime?,
-      startedAt: map['started_at'] as DateTime?,
+      startedAt: DateTime.tryParse(map['started_at'] ?? ""),
       finishedAt: map['finished_at'] as DateTime?,
       images: images,
     );
