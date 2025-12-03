@@ -37,6 +37,9 @@ class HomePageView extends StatelessWidget {
                     ? Center(
                         child: ListViewWidget(
                           serviceOrderList: state.serviceOrders,
+                          onRefresh:
+                              controller.fetchAllServiceOrderUsecase.call,
+                          onDelete: controller.deleteServiceOrderUsecase.call,
                         ),
                       )
                     : Center(child: CircularProgressIndicator());

@@ -1,3 +1,5 @@
+import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
+
 import 'package:flutter/material.dart';
 import 'package:work_flow/core/domain/enum/status_enum.dart';
 import 'package:work_flow/core/domain/model/service_order_model.dart';
@@ -62,9 +64,8 @@ class ListViewWidget extends StatelessWidget {
                         if (direction == DismissDirection.endToStart) {
                           return await _showDeleteDialog(context, serviceOrder);
                         } else if (direction == DismissDirection.startToEnd) {
-                          // Deslizar para direita = Editar
                           await _navigateToEdit(context, serviceOrder);
-                          return false; // Não remove o item
+                          return false;
                         }
                         return false;
                       },
@@ -157,6 +158,7 @@ class ListViewWidget extends StatelessWidget {
         builder: (_) => EditServiceOrderView(serviceOrder: serviceOrder),
       ),
     );
+    onRefresh?.call();
 
     if (result == true && context.mounted) {
       onRefresh?.call();
