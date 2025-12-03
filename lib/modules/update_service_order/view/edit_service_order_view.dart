@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:work_flow/core/di/injection.dart';
-import 'package:work_flow/modules/create_service_order/state/add_service_order_state.dart';
-import 'package:work_flow/modules/create_service_order/view/widgets/service_order_form_widget.dart';
+import 'package:work_flow/core/domain/model/service_order_model.dart';
 import 'package:work_flow/modules/update_service_order/controller/edit_service_order_controller.dart';
 import 'package:work_flow/modules/update_service_order/state/edit_service_order_state.dart';
 import 'package:work_flow/modules/update_service_order/view/edit_service_order_form_widget.dart';
 
 class EditServiceOrderView extends StatelessWidget {
-  final controller = getIt<EditServiceOrderController>();
-  EditServiceOrderView({super.key});
+  final ServiceOrderModel serviceOrder;
+
+  const EditServiceOrderView({super.key, required this.serviceOrder});
 
   @override
   Widget build(BuildContext context) {
+    final controller = getIt<EditServiceOrderController>();
+
     return BlocProvider(
-      create: (context) => controller,
+      create: (context) {
+        // Inicializa o controller com os dados da ordem
+        controller.initialize(serviceOrder);
+        return controller;
+      },
       child: BlocConsumer<EditServiceOrderController, EditServiceOrderState>(
         listener: (context, state) {
           if (state is EditServiceOrderUpdated) {
@@ -24,7 +30,7 @@ class EditServiceOrderView extends StatelessWidget {
             // Mostra mensagem de sucesso
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                content: Text('Ordem de serviço criada com sucesso!'),
+                content: Text('Ordem de serviço atualizada com sucesso!'),
                 backgroundColor: Colors.green,
                 duration: Duration(seconds: 2),
               ),
@@ -52,10 +58,13 @@ class EditServiceOrderView extends StatelessWidget {
                   EditServiceOrderFormWidget(
                     fields: state,
                     controller: controller,
-                  ),
+                    serviceOrder: serviceOrder,
+                  )
+                else if (state is EditServiceOrderLoading)
+                  const Center(child: CircularProgressIndicator()),
 
-                // Overlay de loading
-                if (state is AddServiceOrderLoading)
+                // Overlay de loading durante atualização
+                if (state is EditServiceOrderUpdating)
                   Container(
                     color: Colors.black.withOpacity(0.5),
                     child: const Center(
@@ -67,7 +76,7 @@ class EditServiceOrderView extends StatelessWidget {
                             children: [
                               CircularProgressIndicator(),
                               SizedBox(height: 16),
-                              Text('Criando ordem de serviço...'),
+                              Text('Atualizando ordem de serviço...'),
                             ],
                           ),
                         ),

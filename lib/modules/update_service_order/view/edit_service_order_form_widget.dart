@@ -8,11 +8,13 @@ import 'package:work_flow/modules/update_service_order/state/edit_service_order_
 class EditServiceOrderFormWidget extends StatelessWidget {
   final EditServiceOrderFields fields;
   final EditServiceOrderController controller;
+  final ServiceOrderModel serviceOrder;
 
   const EditServiceOrderFormWidget({
     super.key,
     required this.fields,
     required this.controller,
+    required this.serviceOrder,
   });
 
   @override
@@ -65,18 +67,23 @@ class EditServiceOrderFormWidget extends StatelessWidget {
 
               // Cria o modelo atualizado mantendo o ID e status original
               final updatedServiceOrder = ServiceOrderModel(
-                id: fields.serviceOrder.id, // Mantém o ID original
+                id: serviceOrder.id, // Mantém o ID original
                 name: fields.nameController.text.trim(),
-                status: fields.serviceOrder.status, // Mantém o status original
+                status: serviceOrder.status, // Mantém o status original
                 description: fields.descriptionController.text.trim(),
                 location: fields.placeController.text.trim(),
+                createdAt: serviceOrder.createdAt, // Mantém data de criação
+                startedAt: serviceOrder.startedAt, // Mantém data de início
+                finishedAt:
+                    serviceOrder.finishedAt, // Mantém data de finalização
+                images: fields.images,
               );
 
               // Chama o controller para atualizar a ordem
-              await controller.updateServiceOrder(
+              await controller.putServiceOrderUsecase(
                 updatedServiceOrder,
                 fields.images,
-                fields.serviceOrder.id!,
+                serviceOrder.id!,
               );
             },
             child: const Padding(
